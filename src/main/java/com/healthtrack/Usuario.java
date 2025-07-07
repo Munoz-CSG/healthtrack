@@ -18,6 +18,9 @@ public class Usuario {
     }
 
     public void actualizarPeso(double nuevoPeso) {
+    if (nuevoPeso <= 0) {
+        throw new IllegalArgumentException("El peso debe ser mayor que cero.");
+    }    
     this.peso = nuevoPeso;
     // Error corregido: antes restaba -1kg al nuevo peso
     }
