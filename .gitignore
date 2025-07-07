@@ -1,0 +1,30 @@
+# Archivos y carpetas generadas por Maven
+/target/
+
+# Archivos de logs
+*.log
+
+# Archivos temporales del sistema
+*.tmp
+*.swp
+*.bak
+
+# Archivos de sistema operativo
+.DS_Store
+Thumbs.db
+
+# Configuraciones específicas del IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+*.class
+
+# Archivos relacionados a pruebas
+/test-output/
+surefire-reports/
+jacoco.exec
+
+# Variables de entorno o configuración local
+.env
