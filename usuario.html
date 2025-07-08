@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>HealthTrack - Actualizar Peso</title>
+</head>
+<body>
+    <h1>Actualizar Peso</h1>
+    <label for="peso">Nuevo Peso (kg):</label>
+    <input type="number" id="peso" name="peso">
+    <button id="btnActualizar" onclick="actualizarPeso()">Actualizar</button>
+    <p id="mostrarPeso"></p>
+
+    <script>
+        function actualizarPeso() {
+            const peso = document.getElementById('peso').value;
+            document.getElementById('mostrarPeso').textContent = "Nuevo peso registrado: " + peso + " kg";
+        }
+    </script>
+</body>
+</html>
