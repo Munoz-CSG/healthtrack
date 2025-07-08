@@ -1,0 +1,9 @@
+2025-07-08T10:34:53.355532100 - === INICIO DE PRUEBA ===
+2025-07-08T10:34:53.462996600 - Cargó el archivo HTML: file:///C:/dev/project/bcdevops/mod-4/healthtrack/usuario.html
+2025-07-08T10:34:53.616264700 - Ingresó el peso 67.8
+2025-07-08T10:34:53.720360700 - Clic en botón Actualizar
+2025-07-08T10:34:53.764792500 - Texto mostrado: Nuevo peso registrado: 67.8 kg
+2025-07-08T10:34:53.780425300 - Verificación completada correctamente
+2025-07-08T10:34:54.008750600 - Cerró el navegador
+2025-07-08T10:34:54.008750600 - === FIN DE PRUEBA ===
+
