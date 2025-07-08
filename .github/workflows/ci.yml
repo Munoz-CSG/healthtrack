@@ -26,6 +26,14 @@ jobs:
       - name: Compilación y pruebas con Maven
         run: mvn clean verify
 
+      # Análisis de calidad con SonarCloud
+      - name: Análisis de calidad con SonarCloud
+        uses: SonarSource/sonarcloud-github-action@v2
+        with:
+          organization: munozdev
+          projectKey: Munoz-CSG_healthtrack
+          token: ${{ secrets.SONAR_TOKEN }}
+
       # Instala JMeter en el runner
       - name: Instalar JMeter
         run: |
