@@ -27,4 +27,10 @@ public class UsuarioTest {
             usuario.actualizarPeso(-2.5);
         });
     }
+    @Test
+    public void testNombreUsuario_seMantieneCorrectoTrasActualizarPeso() {
+        Usuario usuario = new Usuario("Sofía", 60.0);
+        usuario.actualizarPeso(62.0);
+        assertEquals("Sofía", usuario.getNombre(), "El nombre del usuario debe permanecer intacto después de actualizar el peso.");
+    }
 }
