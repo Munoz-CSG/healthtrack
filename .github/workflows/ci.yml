@@ -11,22 +11,22 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Clona el repositorio del proyecto
+      # Clona el repositorio
       - name: Checkout del código
         uses: actions/checkout@v3
 
-      # Configura Java 17 como entorno de ejecución
+      # Configura Java 17
       - name: Configurar Java 17
         uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
           java-version: '17'
 
-      # Compila el proyecto y ejecuta pruebas automáticas
+      # Ejecuta pruebas unitarias y funcionales con Maven
       - name: Ejecutar pruebas con Maven
         run: mvn clean test
 
-      # Publica los reportes de pruebas Surefire
+      # Publica los reportes Surefire (JUnit)
       - name: Subir artefactos Surefire
         if: always()
         uses: actions/upload-artifact@v4
@@ -34,7 +34,7 @@ jobs:
           name: surefire-reports
           path: target/surefire-reports/
 
-      # Publica los logs generados por pruebas funcionales
+      # Publica logs de pruebas Selenium
       - name: Subir logs de Selenium
         if: always()
         uses: actions/upload-artifact@v4
@@ -42,13 +42,13 @@ jobs:
           name: selenium-logs
           path: selenium-tests/logs/
 
-      # Ejecuta prueba de rendimiento usando JMeter en modo consola
-      - name: Ejecutar prueba de rendimiento (JMeter)
+      # Ejecuta pruebas de rendimiento con JMeter
+      - name: Ejecutar JMeter (performance test)
         run: |
           mkdir -p jmeter/reporte-html
           jmeter -n -t jmeter/ActualizarPesoPerformance.jmx -l jmeter/resultados.jtl -e -o jmeter/reporte-html
 
-      # Publica el reporte HTML generado por JMeter
+      # Publica el reporte de JMeter
       - name: Subir reporte de JMeter
         if: always()
         uses: actions/upload-artifact@v4
