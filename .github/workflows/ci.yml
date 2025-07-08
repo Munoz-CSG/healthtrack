@@ -11,47 +11,47 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Clona el repositorio en la máquina runner
+      # Clona el repositorio del proyecto
       - name: Checkout del código
         uses: actions/checkout@v3
 
-      # Instala Java 17, necesario para compilar y ejecutar el proyecto
+      # Configura Java 17 como entorno de ejecución
       - name: Configurar Java 17
         uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
           java-version: '17'
 
-      # Ejecuta compilación y pruebas automáticas (unitarias y funcionales)
+      # Compila el proyecto y ejecuta pruebas automáticas
       - name: Ejecutar pruebas con Maven
         run: mvn clean test
 
-      # Almacena los reportes Surefire generados por Maven
+      # Publica los reportes de pruebas Surefire
       - name: Subir artefactos Surefire
         if: always()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: surefire-reports
           path: target/surefire-reports/
 
-      # Almacena los logs generados por las pruebas funcionales con Selenium
+      # Publica los logs generados por pruebas funcionales
       - name: Subir logs de Selenium
         if: always()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: selenium-logs
           path: selenium-tests/logs/
 
-      # Ejecuta prueba de rendimiento con JMeter en modo no interactivo y genera reporte HTML
+      # Ejecuta prueba de rendimiento usando JMeter en modo consola
       - name: Ejecutar prueba de rendimiento (JMeter)
         run: |
           mkdir -p jmeter/reporte-html
           jmeter -n -t jmeter/ActualizarPesoPerformance.jmx -l jmeter/resultados.jtl -e -o jmeter/reporte-html
 
-      # Almacena el reporte HTML generado por JMeter
+      # Publica el reporte HTML generado por JMeter
       - name: Subir reporte de JMeter
         if: always()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: jmeter-report
           path: jmeter/reporte-html/
