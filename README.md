@@ -57,17 +57,42 @@ Archivo: `.github/workflows/ci.yml`
 ## 📁 Estructura del proyecto
 
 ```
+healthtrack/
+├── README.md 
+├── pom.xml 
+├── sonar-project.properties 
+├── usuario.html 
+
+├── .github/
+│   └── workflows/
+│       └── ci.yml 
+
 ├── src/
-│   ├── main/java/com/healthtrack/Usuario.java
-│   └── test/java/com/healthtrack/UsuarioTest.java
+│   ├── main/
+│   │   └── java/
+│   │       └── com/
+│   │           └── healthtrack/
+│   │               ├── Usuario.java
+│   │               └── UsuarioPerformance.java
+│   └── test/
+│       └── java/
+│           └── com/
+│               └── healthtrack/
+│                   ├── UsuarioTest.java
+│                   └── UsuarioFlujoTest.java
+
 ├── selenium-tests/
-│   └── UsuarioFlowTest.java
+│   └── logs/
+│       └── selenium-log.txt
+
 ├── jmeter/
-│   ├── ActualizarPesoPerformance.jmx
+│   ├── ActualizarPesoPerformance.jmx 
 │   └── reporte-html/
-├── docs/
-│   └── capturas/
-└── .github/workflows/ci.yml
+│       ├── index.html
+│       ├── content/
+│       └── sbadmin2-1.0.7/
+
+
 ```
 
 ## ✅ Resultado
