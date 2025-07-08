@@ -22,17 +22,21 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      # Compila el proyecto y ejecuta pruebas unitarias y funcionales
+      # Compila el proyecto y ejecuta pruebas unitarias, de regresión y funcionales
       - name: Compilación y pruebas con Maven
         run: mvn clean verify
 
       # Análisis de calidad con SonarCloud
       - name: Análisis de calidad con SonarCloud
         uses: SonarSource/sonarcloud-github-action@v2
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
-          organization: munozdev
-          projectKey: Munoz-CSG_healthtrack
-          token: ${{ secrets.SONAR_TOKEN }}
+          args: >
+            -Dsonar.projectKey=Munoz-CSG_healthtrack
+            -Dsonar.organization=munozdev
+            -Dsonar.host.url=https://sonarcloud.io
+            -Dsonar.java.binaries=target/classes
 
       # Instala JMeter en el runner
       - name: Instalar JMeter
